@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div.canditates
+    each votes, name in votesCount
+      div.candidate
+        span= name
+        span -
+        span= votes
+  div.addresses
+    each address in addresses
+      p= address
+  
+  form(method="post")
+    input(type="text", name="candidateName", placeholder="Write candidate name")
+    input(type="text", name="address", placeholder="Write an address")
+    button(type="submit") Send
