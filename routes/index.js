@@ -7,7 +7,7 @@ const bytecode = fs.readFileSync('./contracts_Voting_sol_Voting.bin').toString()
 const abi = JSON.parse(fs.readFileSync('./contracts_Voting_sol_Voting.abi').toString());
 const web3 = new Web3('http://localhost:8545');
 let deployedContract = new web3.eth.Contract(abi);
-const listOfCandidates = ['Rama', 'Nick', 'Jose'];
+const listOfCandidates = ['Владимир', 'Володя', 'Вова'];
 
 web3.eth.getAccounts().then(accounts => {
   return deployedContract.deploy({
@@ -35,10 +35,14 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-  const response = await deployedContract.methods.voteForCandidate(web3.utils.asciiToHex(req.body.candidateName)).send({
-    from: req.body.address
-  });
-  res.send(response);
+  try {
+    const response = await deployedContract.methods.voteForCandidate(web3.utils.asciiToHex(req.body.candidateName)).send({
+      from: req.body.address
+    });
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

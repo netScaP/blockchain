@@ -6,3 +6,41 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+table {
+  text-align: left;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.candidate {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.candidate span {
+  border: 1px solid lightgray;
+}
+form {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+select {
+  font-size: 24px;
+  margin-top: 10px;
+}
+button {
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 20px;
+}
+#error {
+  color: red;
+}

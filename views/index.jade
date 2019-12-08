@@ -1,17 +1,27 @@
 extends layout
 
 block content
-  div.canditates
+  h1 Кандидаты
+  table
+    tr
+      th Кандидат
+      th Голоса
     each votes, name in votesCount
-      div.candidate
-        span= name
-        span -
-        span= votes
-  div.addresses
-    each address in addresses
-      p= address
+      tr
+        td= name
+        td= votes
+
+  h1#error
   
-  form(method="post")
-    input(type="text", name="candidateName", placeholder="Write candidate name")
-    input(type="text", name="address", placeholder="Write an address")
+  form(id="mainForm", method="post")
+    select(name="candidateName")
+      option(value='null', selected="selected") Выберите кандидата
+      each votes, name in votesCount
+        option(value=name)= name
+
+    select(name="address")
+      option(value='null', selected="selected") Укажите голосуещего
+      each address in addresses
+        option(value=address)= address
+
     button(type="submit") Send

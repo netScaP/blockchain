@@ -7,4 +7,4 @@ node_modules/.bin/ganache-cli
 in new terminal start nodejs process
 npm run start  or yarn run start
 
-Opne localhost:3000
+Open localhost:3000
